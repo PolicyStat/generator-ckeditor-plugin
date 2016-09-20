@@ -12,16 +12,17 @@ module.exports = yeoman.Base.extend({
     ));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }, {
       type: 'input',
       name: 'pluginName',
       message: 'What would you like to name your plugin?  (Default:  someplugin)',
       default: 'someplugin'
-    }];
+    }, {
+      type: 'input',
+      name: 'pluginDesc',
+      message: 'Enter a description for your plugin:',
+      default: ''
+    }
+    ];
 
     return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
@@ -31,7 +32,9 @@ module.exports = yeoman.Base.extend({
 
   getContext: function() {
     return {
-      pluginName: this.props.pluginName
+      pluginName: this.props.pluginName,
+      pluginDesc: this.props.pluginDesc,
+      license: 'MIT'
     };
   },
 
@@ -40,9 +43,12 @@ module.exports = yeoman.Base.extend({
     this.fs.copyTpl(
       this.templatePath('core/plugins/pluginname/plugin.js'),
       this.destinationPath(this.props.pluginName + '/plugin.js'),
-      {
-        pluginName: this.props.pluginName
-      }
+      context
+    );
+    this.fs.copyTpl(
+      this.templatePath('package.json'),
+      this.destinationPath('package.json'),
+      context
     );
     //this.fs.copyTpl(glob.sync('core/**', {dot: true}), 'dist', context)
   },
@@ -57,9 +63,7 @@ module.exports = yeoman.Base.extend({
     );
   },
 
-  pullSubmoduledCKEditor: function() {
-    // TODO
-  },
+
 
   createTestingSymlinks: function() {
     // TODO
@@ -68,9 +72,10 @@ module.exports = yeoman.Base.extend({
   writing: function () {
     this.copyCoreFiles();
     this.copyTestingFiles();
+
   },
 
   install: function () {
-    this.installDependencies();
+    this.npmInstall();
   }
 });
