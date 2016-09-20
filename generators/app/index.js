@@ -46,7 +46,7 @@ module.exports = yeoman.Base.extend({
       context
     );
     this.fs.copyTpl(
-      this.templatePath('package.json'),
+      this.templatePath('core/package.json'),
       this.destinationPath('package.json'),
       context
     );
