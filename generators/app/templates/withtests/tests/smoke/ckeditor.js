@@ -1,5 +1,5 @@
 /* bender-tags: editor */
-/* bender-ckeditor-plugins: wysiwygarea,detabler */
+/* bender-ckeditor-plugins: wysiwygarea,<%= pluginName %> */
 
 // Clean up all instances been created on the page.
 (function () {

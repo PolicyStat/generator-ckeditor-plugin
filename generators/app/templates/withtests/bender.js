@@ -48,7 +48,7 @@ var config = {
             basePath: 'tests/',
             paths: [
                 'smoke/**',
-                'detabler/**',
+                '<%= pluginName %>/**',
                 '!**/_*/**'
             ],
             // Latest of the old API (1.8.3)
