@@ -30,7 +30,7 @@ module.exports = yeoman.Base.extend({
     }.bind(this));
   },
 
-  getContext: function() {
+  getContext: function () {
     return {
       pluginName: this.props.pluginName,
       pluginDesc: this.props.pluginDesc,
@@ -38,7 +38,7 @@ module.exports = yeoman.Base.extend({
     };
   },
 
-  copyCoreFiles: function() {
+  copyCoreFiles: function () {
     var context = this.getContext();
     this.fs.copyTpl(
       this.templatePath('core/plugins/pluginname/plugin.js'),
@@ -53,7 +53,7 @@ module.exports = yeoman.Base.extend({
     //this.fs.copyTpl(glob.sync('core/**', {dot: true}), 'dist', context)
   },
 
-  copyTestingFiles: function() {
+  copyTestingFiles: function () {
     var context = this.getContext();
 
     this.fs.copyTpl(
@@ -63,16 +63,13 @@ module.exports = yeoman.Base.extend({
     );
   },
 
-
-
-  createTestingSymlinks: function() {
-    // TODO
+  createTestingSymlinks: function () {
+    this.spawnCommand('npm', ['run-script', 'symlink-plugin-to-ckeditor']);
   },
 
   writing: function () {
     this.copyCoreFiles();
     this.copyTestingFiles();
-
   },
 
   install: function () {
