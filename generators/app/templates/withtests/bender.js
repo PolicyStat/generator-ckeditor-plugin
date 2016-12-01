@@ -43,7 +43,7 @@ var config = {
     ],
 
     tests: {
-        detabler: {
+        '<%= pluginName %>': {
             applications: ['ckeditor'],
             basePath: 'tests/',
             paths: [
