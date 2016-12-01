@@ -50,6 +50,21 @@ module.exports = yeoman.Base.extend({
       this.destinationPath('package.json'),
       context
     );
+    this.fs.copyTpl(
+      this.templatePath('core/.gitignore'),
+      this.destinationPath('.gitignore'),
+      context
+    );
+    this.fs.copyTpl(
+      this.templatePath('core/.gitmodules'),
+      this.destinationPath('.gitmodules'),
+      context
+    );
+    this.fs.copyTpl(
+      this.templatePath('core/.travis.yml'),
+      this.destinationPath('.travis.yml'),
+      context
+    );
     //this.fs.copyTpl(glob.sync('core/**', {dot: true}), 'dist', context)
   },
 
