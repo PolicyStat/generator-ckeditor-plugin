@@ -6,6 +6,7 @@
     "test": "tests"
   },
   "scripts": {
+    "symlink-plugin-to-ckeditor": "ln -s ../../<%= pluginName %> ckeditor/plugins/<%= pluginName %>",
     "test": "bender run"
   },
   "author": "",
@@ -16,8 +17,6 @@
     "benderjs-cli": "^0.1.1",
     "benderjs-jquery": "^0.3.0",
     "benderjs-sinon": "^0.3.1",
-    "benderjs-yui": "^0.3.3",
-    "ckeditor-dev": "^4.5.11",
-    "ckeditor": "^4.5.11"
+    "benderjs-yui": "^0.3.3"
   }
 }

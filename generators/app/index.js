@@ -30,7 +30,7 @@ module.exports = yeoman.Base.extend({
     }.bind(this));
   },
 
-  getContext: function() {
+  getContext: function () {
     return {
       pluginName: this.props.pluginName,
       pluginDesc: this.props.pluginDesc,
@@ -38,7 +38,7 @@ module.exports = yeoman.Base.extend({
     };
   },
 
-  copyCoreFiles: function() {
+  copyCoreFiles: function () {
     var context = this.getContext();
     this.fs.copyTpl(
       this.templatePath('core/plugins/pluginname/plugin.js'),
@@ -50,10 +50,25 @@ module.exports = yeoman.Base.extend({
       this.destinationPath('package.json'),
       context
     );
+    this.fs.copyTpl(
+      this.templatePath('core/.gitignore'),
+      this.destinationPath('.gitignore'),
+      context
+    );
+    this.fs.copyTpl(
+      this.templatePath('core/.gitmodules'),
+      this.destinationPath('.gitmodules'),
+      context
+    );
+    this.fs.copyTpl(
+      this.templatePath('core/.travis.yml'),
+      this.destinationPath('.travis.yml'),
+      context
+    );
     //this.fs.copyTpl(glob.sync('core/**', {dot: true}), 'dist', context)
   },
 
-  copyTestingFiles: function() {
+  copyTestingFiles: function () {
     var context = this.getContext();
 
     this.fs.copyTpl(
@@ -63,16 +78,14 @@ module.exports = yeoman.Base.extend({
     );
   },
 
-
-
-  createTestingSymlinks: function() {
-    // TODO
+  createTestingSymlinks: function () {
+    // TODO git init + git submodule ckeditor
+    //this.spawnCommand('npm', ['run-script', 'symlink-plugin-to-ckeditor']);
   },
 
   writing: function () {
     this.copyCoreFiles();
     this.copyTestingFiles();
-
   },
 
   install: function () {

@@ -1,0 +1,5 @@
+[submodule "ckeditor"]
+	path = ckeditor
+	url = git://github.com/ckeditor/ckeditor-dev.git
+	branch = latest
+        ignore = dirty
