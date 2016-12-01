@@ -79,7 +79,8 @@ module.exports = yeoman.Base.extend({
   },
 
   createTestingSymlinks: function () {
-    this.spawnCommand('npm', ['run-script', 'symlink-plugin-to-ckeditor']);
+    // TODO git init + git submodule ckeditor
+    //this.spawnCommand('npm', ['run-script', 'symlink-plugin-to-ckeditor']);
   },
 
   writing: function () {
